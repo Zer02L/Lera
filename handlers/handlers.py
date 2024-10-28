@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 from aiogram import types
-from aiogram import F
+from aiogram import F # alias for MagicFilter in aiogram
+from aiogram.filters.command import Command, CommandStart
 from aiogram import Dispatcher
 from keyboards.keyboards import main_keyboard, training_keyboard
 
@@ -10,10 +11,16 @@ load_dotenv()
 WHATSAPP_NUMBER = os.getenv("WHATSAPP_NUMBER")
 whatsapp_link = f"https://wa.me/{WHATSAPP_NUMBER}"
 
+
 def register_handlers(dp: Dispatcher):
-    @dp.message(F.command('start'))
-    async def send_welcome(message: types.Message):
+
+    @dp.message(Command('start'))
+    async def cmd_welcome(message: types.Message):
         await message.answer("Добро пожаловать! Выберите опцию:", reply_markup=main_keyboard)
+
+    # @dp.message()
+    # async def process_any_message(message: types.Message):
+    #     await message.reply(text=message.text)
 
     @dp.message(F.text == "Обо мне")
     async def about_me(message: types.Message):

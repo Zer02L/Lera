@@ -1,0 +1,46 @@
+{
+	"sections": {
+		"about": {
+			"description": "",
+			"image": ""
+		},
+		"services": {
+			"description": "",
+			"image": ""
+		},
+		"rental": {
+			"description": "",
+			"image": ""
+		},
+		"training": {
+			"description": "",
+			"image": ""
+		},
+		"adults": {
+			"description": "",
+			"image": ""
+		},
+		"kids": {
+			"description": "",
+			"image": ""
+		},
+		"free": {
+			"description": "",
+			"image": ""
+		}
+	},
+	"buttons": {
+		"general_kb": {
+			"services": "",
+			"traning": "",
+			"rental": ""
+		},
+		"services_kb":{
+			"adults": "",
+			"kids": ""
+		},
+		"contact" : "",
+		"price": "",
+		"back": ""
+	}
+}

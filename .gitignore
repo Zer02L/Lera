@@ -47,6 +47,8 @@ share/python-wheels/
 # Local environment files
 .env
 
+configs.json
+
 # Ignore pyenv files
 .python-version
 

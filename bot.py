@@ -1,10 +1,14 @@
-import logging
+
 import asyncio
 import os
-from aiogram import Bot, Dispatcher
+import logging
+
+from aiogram import Bot, Dispatcher, Router
 from aiogram.fsm.storage.memory import MemoryStorage
 from dotenv import load_dotenv
-from handlers.handlers import register_handlers
+
+
+from app.handlers.handlers import router
 
 # Загружаем переменные окружения из .env файла
 load_dotenv()
@@ -21,15 +25,13 @@ bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
-
-# Регистрация обработчиков
-register_handlers(dp)
-
 # Запуск бота
 async def main():
+    dp.include_router(router)
     logger.info("Starting bot")
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
+    # logging.basicConfig(level=logging.INFO)
     asyncio.run(main())

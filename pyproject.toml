@@ -1,0 +1,19 @@
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.py?$',
+exclude = '''
+/(
+    \.git
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["app"] # Укажите имя основного пакета проекта

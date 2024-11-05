@@ -60,3 +60,5 @@ configs.json
 
 # macOS
 .DS_Store
+
+images/

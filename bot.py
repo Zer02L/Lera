@@ -13,8 +13,8 @@ from app.handlers.handlers import router
 load_dotenv()
 
 # Устанавливаем уровень логирования
-logger = logging.getLogger("main")
-logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger("main")
+# logging.basicConfig(level=logging.INFO)
 
 # Получаем токен из переменной окружения
 API_TOKEN = os.getenv("API_TOKEN")
@@ -28,7 +28,7 @@ dp = Dispatcher(storage=storage)
 # Запуск бота
 async def main():
     dp.include_router(router)
-    logger.info("Starting bot")
+    # logger.info("Starting bot")
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

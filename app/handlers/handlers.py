@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from aiogram import Router, F # F alias for MagicFilter in aiogram
-from aiogram.types import Message, CallbackQuery, InputMediaPhoto, FSInputFile
+from aiogram.types import Message, CallbackQuery
 
 from aiogram.filters.command import CommandStart, Command
 
@@ -32,20 +32,25 @@ free_tg_group = os.getenv("FREE_CHANNEL")
 @router.message(CommandStart())
 async def cmd_welcome(message: Message):
     # Создаем клавиатуру
+    
     general_keyboard = await kb.create_general_kb()  # Убедитесь, что эта функция асинхронная
-
+    
     # Отправляем сообщение
     await send(message, "about", general_keyboard)
 
-@router.callback_query(F.data.in_({"services", "rental", "free", "price", "back"}))
+@router.callback_query(F.data.in_({"services", "rental", "free", "price", "back", "adults", "kids", "traning", "contact"}))
 async def callback_handler(callback: CallbackQuery):
     # Сопоставление значений F.data с ключами и функциями создания клавиатур
     data_to_section = {
         "services": ("services", kb.create_services_kb),
         "rental": ("rental", kb.create_rental_kb),
-        "free": ("free", kb.create_free_kb),
         "price": ("price", kb.create_price_kb),
+        "free": ("free", kb.create_free_kb),
+        "adults": ("adults", kb.create_adults_kb),
         "back": ("about", kb.create_general_kb),
+        "kids": ("kids", kb.create_kids_kb),
+				"traning": ("traning", kb.create_traning_kb),
+        "contact": ("contact", kb.create_contacts_kb)
     }
 
     section_key, keyboard_func = data_to_section[callback.data]

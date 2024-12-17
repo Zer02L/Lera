@@ -46,7 +46,19 @@ async def create_rental_kb():
     return await create_kb({}, extra_buttons=[(contact, "contact"), (back, "back")], columns=1)
 
 async def create_free_kb():
-    return await create_kb({}, extra_buttons=[(free, "free_channel"), (back, "back")], columns=1)
+    return await create_kb({}, extra_buttons=[(back, "back")], columns=1) # (free, "free_channel"),
 
 async def create_price_kb():
+    return await create_kb({}, extra_buttons=[(contact, "contact"), (back, "back")], columns=1)
+
+async def create_adults_kb():
     return await create_kb({}, extra_buttons=[(price, "price"), (back, "back")], columns=1)
+
+async def create_kids_kb():
+    return await create_kb({}, extra_buttons=[(price, "price"), (back, "back")], columns=1)
+
+async def create_traning_kb():
+    return await create_kb({}, extra_buttons=[(contact, "contact"), (back, "back")], columns=1)
+
+async def create_contacts_kb():
+    return await create_kb({}, extra_buttons=[(back, "back")], columns=1)
